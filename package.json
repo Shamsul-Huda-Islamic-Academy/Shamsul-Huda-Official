@@ -13,10 +13,10 @@
   },
   "name": "shamsulhuda",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",

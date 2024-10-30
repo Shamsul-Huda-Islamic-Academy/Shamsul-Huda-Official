@@ -1,8 +1,10 @@
 const express = require('express')
+require('dotenv').config()
+
 const dbConnect = require('./config/connection')
+
 const app = express()
 const port = process.env.PORT || 5000
-require('dotenv').config()
 
 dbConnect()
 .then(()=>{
