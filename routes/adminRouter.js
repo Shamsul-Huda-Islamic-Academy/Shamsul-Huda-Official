@@ -9,5 +9,6 @@ adminRouter.set('views','./views/admin')
 
 // login page
 adminRouter.get('/login',adminController.loginGet)
+adminRouter.post('/login',adminController.loginPost)
 
 module.exports = adminRouter
