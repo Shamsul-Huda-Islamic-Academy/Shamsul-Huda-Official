@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form  action="/admin/login"  method="post">
+    <form method="post">
         <div class="form-group">
         <label for="email">Email</label><br>
         <input type="email" id="emailInput" name="Email" placeholder="Type your email here" required ><br>
@@ -19,8 +19,11 @@
         </div>
         <input >
         <button class="login-button" id="submit"  type="submit" name="submit" style="background-color: blueviolet;">Submit</button>
-        <input type="hidden" id="error" style="color: rgb(142 0 0); width: 100%; background: none; border: none; text-align: center; padding-top: 10PX;font-size: 17PX">
+        <input type="hidden" id="errorInput" style="color: rgb(142 0 0); width: 100%; background: none; border: none; text-align: center; padding-top: 10PX;font-size: 17PX">
         <input type="hidden" name="token" id="token">
     </form>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="/admin/js/login.js"></script>
 </body>
 </html>
