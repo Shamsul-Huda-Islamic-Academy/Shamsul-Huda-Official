@@ -14,7 +14,9 @@
   "name": "shamsulhuda",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  },
   "scripts": {
     "start": "nodemon"
   },

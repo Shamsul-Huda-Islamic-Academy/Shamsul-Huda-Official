@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/styles/output.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        <div class="form-group">
+        <label for="email">Email</label><br>
+        <input type="email" id="emailInput" name="Email" placeholder="Type your email here" required ><br>
+        </div>
+        <div class="form-group">
+        <label for="pass">Password</label><br>
+        <input type="password" id="passwordInput" name="password" placeholder="password" required ><br>
+        </div>
+        <input >
+        <button class="login-button" id="submit"  type="submit" name="submit" style="background-color: blueviolet;">Submit</button>
+        <input type="hidden" id="errorInput" style="color: rgb(142 0 0); width: 100%; background: none; border: none; text-align: center; padding-top: 10PX;font-size: 17PX">
+        <input type="hidden" name="token" id="token">
+    </form>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="/admin/js/login.js"></script>
+</body>
+</html>
