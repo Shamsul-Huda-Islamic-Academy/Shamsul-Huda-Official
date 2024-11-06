@@ -54,6 +54,38 @@ exports.dashboardGet = (req,res) =>{
     res.render('dashboard')
 }
 
-exports.dashboardPost = (req,res) => {
-    res.render('dashboard')
+// Events 
+exports.eventGet = (req,res) => {
+    res.render('event')
+}
+
+exports.addEventGet = (req,res) => {
+    res.render('addEvent')
+}
+
+// activity 
+exports.activityGet = (req,res) => {
+    res.render('activity')
+}
+
+exports.addActivityGet = (req,res) => {
+    res.render('addActivity')
+}
+
+// banner
+exports.bannerGet = (req,res) => {
+    res.render('banner')
+}
+
+exports.addBannerGet = (req,res) => { 
+    res.render('addBanner')
+}
+
+// notification
+exports.notificationGet = (req,res) => {
+    res.render('notification')
+}
+
+exports.addNotificationGet = (req,res) => { 
+    res.render('addNotification')
 }
