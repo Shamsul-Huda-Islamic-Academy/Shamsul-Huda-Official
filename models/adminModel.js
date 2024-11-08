@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const adminSchema = mongoose.Schema({
-    Email : {
+    email : {
         type : String,
         required : true
     },
