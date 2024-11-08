@@ -6,6 +6,13 @@
     <title>Activities</title>
 </head>
 <body>
-    <a href="/admin/addActivity"><button>Activity</button></a>
+    <a href="/admin/addActivity"><button>Add Activity</button></a>
+    <div style="border: 6px black;" class="card">
+        <% activities.forEach(activity =>{ %>
+        <img src="<%= activity.activityImage %>" alt="<%= activity.title %>">
+        <h1><%= activity.title %></h1>
+        <h2><%= activity.description %></h2>
+        <% }) %>
+    </div>
 </body>
 </html>

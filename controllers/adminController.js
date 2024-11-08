@@ -21,11 +21,11 @@ exports.loginPost =async (req,res) =>{
 
 
             if(adminData.password === inputPassword){
-                const token = jwt.sign(
-                    {adminId : adminData._id},
-                    JWT_SECRETE,
-                    {expiresIn : '1h'}
-                ) 
+                // const token = jwt.sign(
+                //     {adminId : adminData._id},
+                //     JWT_SECRETE,
+                //     {expiresIn : '1h'}
+                // ) 
                 res.status(200).json({
                     data : "Logged in succesfully",
                     token : token
@@ -53,34 +53,6 @@ exports.loginPost =async (req,res) =>{
 exports.dashboardGet = (req,res) =>{
     res.render('dashboard')
 }
-
-// Events 
-exports.eventGet = (req,res) => {
-    res.render('event')
-}
-
-exports.addEventGet = (req,res) => {
-    res.render('addEvent')
-}
-
-// activity 
-exports.activityGet = (req,res) => {
-    res.render('activity')
-}
-
-exports.addActivityGet = (req,res) => {
-    res.render('addActivity')
-}
-
-// banner
-exports.bannerGet = (req,res) => {
-    res.render('banner')
-}
-
-exports.addBannerGet = (req,res) => { 
-    res.render('addBanner')
-}
-
 // notification
 exports.notificationGet = (req,res) => {
     res.render('notification')
@@ -88,4 +60,9 @@ exports.notificationGet = (req,res) => {
 
 exports.addNotificationGet = (req,res) => { 
     res.render('addNotification')
+}
+
+// add Admin
+exports.addAdminGet = (req,res) => {
+    res.render('addAdmin')
 }

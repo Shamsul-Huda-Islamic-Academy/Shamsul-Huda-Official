@@ -15,11 +15,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         axios.post('/admin/login',data)
         .then((response)=>{
-            if (response.data.token) {
-                localStorage.setItem('token', response.data.token);
-                window.location.href = "/admin/dashboard";
-            } else {
-                console.error("No token found in response data");
+            // if (response.data.token) {
+            //     localStorage.setItem('token', response.data);
+            //     window.location.href = "/admin/dashboard";
+            // } else {
+            //     console.error("No token found in response data");
+            // }
+            if(response.data){
+                axios.get('/admin/dashboard')
+            }else{
+                console.log("Cannot get the dashboard page");
             }
         })
         .catch((error)=>{

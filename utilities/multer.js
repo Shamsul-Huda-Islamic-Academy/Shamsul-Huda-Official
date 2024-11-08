@@ -1,16 +1,20 @@
-const multer = require('mongoose')
+const multer = require('multer')
 
-const  storage = multer.diskStorage ({
+const Storage = multer.diskStorage ({
     destination : function (req,file,cb) {
-        if(file.fieldname === 'image'){
-            cb(null, './public/photos/upload/images')
+        if(file.fieldname === 'eventImage'){
+            cb(null, './public/photos/upload/events/')
         }
-        else{
-            cb(null, './public/photos/upload/other')
+        else if(file.fieldname === 'activityImage') {
+            cb(null, './public/photos/upload/activity/')
+        }else if(file.fieldname === 'bannerImage'){
+            cb(null, './public/photos/upload/banner/')
         }
     },
     filename : function(req,file,cb){
-        const uniqueSuffix = Date.now + '-' + file.originalname
+        const uniqueSuffix = Date.now() + '-' + file.originalname;
         cb(null, uniqueSuffix)
     }
 })
+
+module.exports = Storage
