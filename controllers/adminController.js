@@ -14,7 +14,7 @@ exports.loginPost =async (req,res) =>{
     try{
         const loginData = req.body
         const {Email,password : inputPassword} = loginData
-        const adminData = await adminModel.findOne({Email : Email})
+        const adminData = await adminModel.findOne({email : Email})
         console.log("Email received:", Email);
     
         if(adminData){
@@ -28,7 +28,7 @@ exports.loginPost =async (req,res) =>{
                 // ) 
                 res.status(200).json({
                     data : "Logged in succesfully",
-                    token : token
+                    // token : token
                 })    
                            
                 // return res.redirect('/admin/dashboard')
