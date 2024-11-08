@@ -3,10 +3,10 @@ require('dotenv').config()
 const dbConnect = require('./config/connection')
 const app = express()
 const port = process.env.PORT || 5000
-
+const path = require('path')
 // serving public
-app.use(express.static('./public'))
-
+// app.use(express.static('./public'))
+app.use(express.static(path.join(__dirname, './public')))
 
 // client
 const client = require('./routes/clientRouter')

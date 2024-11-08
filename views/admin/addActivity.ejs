@@ -9,13 +9,15 @@
     <h1>ADD ACTIVITY</h1>
     <form action="/admin/addActivity" method="post" enctype="multipart/form-data">
         <label for="">Activity</label>
-        <input type="text" name="activity">
+        <input type="text" name="title">
 
         <label for="">Description</label>
-        <input type="text" name="activityDes" id="">
+        <input type="text" name="description" id="">
 
         <label for="">Image</label>
-        <input type="file" name="image">
+        <input type="file" name="activityImage">
+
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
