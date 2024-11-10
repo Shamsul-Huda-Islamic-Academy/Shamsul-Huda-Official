@@ -17,4 +17,4 @@ const Storage = multer.diskStorage ({
     }
 })
 
-module.exports = Storage
+module.exports = Storage;
