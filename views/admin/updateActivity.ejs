@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <h1>Update</h1>
+    <form action="/admin/updateActivity/<%= activity._id %>" method="post" enctype="multipart/form-data">
+        <label for="">Activity</label>
+        <textarea name="title" type="text"><%= activity.title %></textarea>
+
+        <label for="">Description</label>
+        <textarea type="text" name="description"><%= activity.description %></textarea>
+
+        <label for="">Image</label>
+        <input type="file" name="activityimage">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -12,6 +12,9 @@
         <img src="<%= activity.activityImage %>" alt="<%= activity.title %>">
         <h1><%= activity.title %></h1>
         <h2><%= activity.description %></h2>
+        <a href="/admin/activityDetail/<%= activity._id %>"><button >View</button></a>
+        <a href="/admin/updateActivity/<%= activity._id %>"><button>Edit</button></a>
+        <a href="/admin/deleteActivity/<%= activity._id %>"><button>Delete</button></a>
         <% }) %>
     </div>
 </body>
