@@ -39,7 +39,7 @@ exports.addActivityPost = async (req,res) => {
         const {title, description} = req.body
         const image = req.file
     
-        const path = '/photos/upload/activity/'+image.filename
+        const path = '/photos/upload/activity'+image.filename
         const data = new activityModel({
             title, 
             description,
