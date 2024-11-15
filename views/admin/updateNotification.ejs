@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Notification</title>
 </head>
 <body>
-    <h1>Add Notification</h1>
-    <form action="/admin/addNotification" method="post">
+    <h1>Update Notification</h1>
+    <form action="/admin/updateNotification/<%= notification._id %>" method="post">
         <label for="">Notification</label>
-        <input type="text" name="notification">
+        <textarea name="notification" type="text"><%= notification.notification %></textarea>
 
         <button type="submit">Submit</button>
     </form>

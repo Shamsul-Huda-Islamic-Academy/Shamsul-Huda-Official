@@ -6,5 +6,5 @@ const notificationSchema = mongoose.Schema({
         required : true 
     }
 })
-const collection = new mongoose.model("notification",notificationSchema)
+const collection = mongoose.model("notification",notificationSchema)
 module.exports = collection
