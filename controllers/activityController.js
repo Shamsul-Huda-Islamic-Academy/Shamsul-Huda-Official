@@ -39,14 +39,13 @@ exports.addActivityPost = async (req,res) => {
         const {title, description} = req.body
         const image = req.file
     
-        const path = '/photos/upload/activity'+image.filename
+        const path = '/photos/upload/activity/'+image.filename
         const data = new activityModel({
             title, 
             description,
             activityImage : path
         })
         await data.save()
-        console.log(path)
     
         res.redirect('/admin/activity')
     }
@@ -66,31 +65,31 @@ exports.updateActivityGet = async (req,res) => {
         res.status(500).json({message : "Update page is not getting"})
     }
 }
-exports.updateActivityPost = async (req,res) => {
-    try{
-        const {title,description} = req.body
-        const image = req.file
-        const activityId = req.params.id
-        const activity = await activityModel.findOne({_id : activityId})
+exports.updateActivityPost = async (req, res) => {
+    try {
+        const { title, description } = req.body;
+        const { id: activityId } = req.params;
+        const activity = await activityModel.findById(activityId);
 
-        if(activity){
-            const updateActivity = { 
-                title,
-                description
-            }
-            if(req.file){
-                const newImage = '/photos/upload/activity/'+image.filename
-                updateActivity.image = newImage
-            }
-            await activityModel.updateOne({_id : activityId},{$set : updateActivity},{upsert : true})
-            res.redirect('activity')
+        if (!activity) {
+            return res.status(404).json({ message: "Activity not found" });
         }
+
+        const updateData = { title, description };
+
+        if (req.file) {
+            const newImage = `/photos/upload/activity/${req.file.filename}`;
+            updateData.activityImage = newImage;
+        }
+
+        await activityModel.updateOne({ _id: activityId }, { $set: updateData });
+
+        res.redirect('/admin/activity');
+    } catch (error) {
+        console.error("Error while updating the activity", error);
+        res.status(500).json({ message: "Updating activity failed" });
     }
-    catch(error){
-        console.log("Error while updating the card",error)
-        res.status(500).json({message : "Updating failed"})
-    }
-}
+};
 
 // delete 
 exports.deleteActivity = async (req,res) => {
@@ -100,7 +99,7 @@ exports.deleteActivity = async (req,res) => {
 
         if(activity)
         await activityModel.deleteOne({_id : activityId})
-        res.redirect('activity')
+        res.redirect('/admin/activity')
     }
     catch(error){
         console.log("Error while deleting the activity : ",error)
