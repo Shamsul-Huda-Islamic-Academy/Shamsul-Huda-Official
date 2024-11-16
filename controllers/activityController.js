@@ -39,7 +39,7 @@ exports.addActivityPost = async (req,res) => {
         const {title, description} = req.body
         const image = req.file
     
-        const path = '/photos/upload/activity'+image.filename;
+        const path = '/photos/upload/activity'+image.filename
         const data = new activityModel({
             title, 
             description,
@@ -79,11 +79,11 @@ exports.updateActivityPost = async (req,res) => {
                 description
             }
             if(req.file){
-                const newImage = '/photos/upload/activity'+image.filename
+                const newImage = '/photos/upload/activity/'+image.filename
                 updateActivity.image = newImage
             }
             await activityModel.updateOne({_id : activityId},{$set : updateActivity},{upsert : true})
-            res.render('activity')
+            res.redirect('activity')
         }
     }
     catch(error){

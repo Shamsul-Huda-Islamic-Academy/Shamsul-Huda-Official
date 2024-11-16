@@ -7,5 +7,11 @@
 </head>
 <body>
     <a href="/admin/addNotification"><button>Add Notification</button></a>
+    <% notifications.forEach(notification => { %>
+        <h4><%= notification.notification %></h4>
+
+        <a href="/admin/updateNotification/<%= notification._id %>"><button>Edit</button></a>
+        <a href="">Delete</a>
+    <% }) %>
 </body>
 </html>

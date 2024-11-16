@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const adminModel = require('../models/adminModel')
+const notificationModel = require('../models/notificationModel')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
@@ -54,12 +55,68 @@ exports.dashboardGet = (req,res) =>{
     res.render('dashboard')
 }
 // notification
-exports.notificationGet = (req,res) => {
-    res.render('notification')
+exports.notificationGet = async (req,res) => {
+    try{
+        const notifications = await notificationModel.find()
+
+        res.render('notification',{notifications})
+    }
+    catch(err){
+        console.log('Error while getting notfication : ',err)
+        res.status(500).json({message : 'Notification getting failed'})
+    }
 }
 
 exports.addNotificationGet = (req,res) => { 
     res.render('addNotification')
+}
+
+exports.addNotificationPost = async (req,res) => {
+    try{
+        const {notification} = req.body
+
+        const data = new notificationModel({
+            notification : notification
+        })
+
+        await data.save()
+        res.redirect('/admin/notification')
+    }
+    catch(err){
+        console.log("Error while adding notification : ",err)
+    }
+}
+
+exports.updateNotficationGet = async (req,res) => {
+    try{
+        const notification = await notificationModel.findOne()
+
+        res.render('updateNotification',{notification})
+    }
+    catch(err){
+        console.log("Error while getting notification upodation details : ",err)
+        res.status(500).json({message : 'Update notification is not getting'})
+    }
+}
+
+exports.updateNotificationPost = async(req,res) => {
+    try{
+        const {notification} = req.body
+        const notificationId = req.params.id
+        const Notification = await notificationModel.findOneAndUpdate({_id : notificationId},{$set : {notification : notification}},{new : true,upsert : true})
+        
+        if(Notification){
+            const updateNotification = {
+                notification : notification
+            }
+            await notificationModel.findOne({_id : notificationId},{$set : updateNotification},{upsert : true})
+            res.redirect('/admin/notification')
+        }
+    }
+    catch(err){
+        console.log("Error while updating the notification : ",err)
+        res.status(500).json({message : "Error while updating notification"})
+    }
 }
 
 // add Admin
