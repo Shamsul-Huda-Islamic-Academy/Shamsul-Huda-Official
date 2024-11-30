@@ -7,15 +7,17 @@
 </head>
 <body>
     <h1>Add Banner</h1>
-    <form action="/admin/addEvent" method="post" enctype="multipart/form-data">
-        <label for="">Event</label>
-        <input type="text" name="event">
+    <form action="/admin/addBanner" method="post" enctype="multipart/form-data">
+        <label for="">Title</label>
+        <input type="text" name="title">
 
         <label for="">Description</label>
-        <input type="text" name="eventDes">
+        <input type="text" name="description">
 
         <label for="">Image</label>
         <input type="file" name="bannerImage">
+
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Banner </title>
+</head>
+<body>
+    <h1>Update Banner</h1>
+    <form action="/admin/updateBanner/<%= banner._id %>" method="post" enctype="multipart/form-data">
+        <label for="">Banner</label>
+        <textarea name="title" type="text"><%= banner.title %></textarea>
+
+        <label for="">Description</label>
+        <textarea type="text" name="description"><%= banner.description %></textarea>
+
+        <label for="">Image</label>
+        <input type="file" name="bannerImage">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

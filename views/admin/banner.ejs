@@ -7,5 +7,17 @@
 </head>
 <body>
     <a href="/admin/addBanner"><button>Add Banner</button></a>
+    <div style="border: 6px black;" class="card">
+        <% banners.forEach(banner => { %>
+            <img src="<%= banner.bannerImage %>" alt="<%= banner.title %>">
+            <h1><%= banner.title %></h1>
+            <h2><%= banner.description %></h2>
+            <!-- view, edit, delete -->
+             <a href="/admin/updateBanner/<%= banner._id %>"><button>Edit</button></a>
+             <form action="/admin/deleteBanner/<%= banner._id %>" method="post" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        <% }) %>
+    </div>
 </body>
 </html>

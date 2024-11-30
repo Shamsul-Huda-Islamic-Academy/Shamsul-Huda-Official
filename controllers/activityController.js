@@ -72,7 +72,7 @@ exports.updateActivityPost = async (req,res) => {
         const image = req.file
         const activityId = req.params.id
         const activity = await activityModel.findOne({_id : activityId})
-
+        
         if(activity){
             const updateActivity = { 
                 title,
@@ -83,7 +83,7 @@ exports.updateActivityPost = async (req,res) => {
                 updateActivity.image = newImage
             }
             await activityModel.updateOne({_id : activityId},{$set : updateActivity},{upsert : true})
-            res.redirect('activity')
+            res.redirect('/admin/activity')
         }
     }
     catch(error){
@@ -93,17 +93,19 @@ exports.updateActivityPost = async (req,res) => {
 }
 
 // delete 
-exports.deleteActivity = async (req,res) => {
-    try{
-        const activityId = req.params.id
-        const activity = await activityModel.findOne({_id : activityId})
+exports.deleteActivity = async (req, res) => {
+    try {
+        const activityId = req.params.id;
+        const activity = await activityModel.findById(activityId);
 
-        if(activity)
-        await activityModel.deleteOne({_id : activityId})
-        res.redirect('activity')
+        if (activity) {
+            await activityModel.deleteOne({ _id: activityId });
+            res.redirect('/admin/activity');
+        } else {
+            res.status(404).send("Activity not found");
+        }
+    } catch (error) {
+        console.error("Error while deleting the activity:", error);
+        res.status(500).json({ message: "Deleting the activity failed" });
     }
-    catch(error){
-        console.log("Error while deleting the activity : ",error)
-        res.status(500).json({message : 'Deleting the activity failed'})
-    }
-}
+};

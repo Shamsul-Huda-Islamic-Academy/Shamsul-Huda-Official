@@ -103,13 +103,13 @@ exports.updateNotificationPost = async(req,res) => {
     try{
         const {notification} = req.body
         const notificationId = req.params.id
-        const Notification = await notificationModel.findOneAndUpdate({_id : notificationId},{$set : {notification : notification}},{new : true,upsert : true})
+        const Notification = await notificationModel.findOne({_id : notificationId})
         
         if(Notification){
             const updateNotification = {
                 notification : notification
             }
-            await notificationModel.findOne({_id : notificationId},{$set : updateNotification},{upsert : true})
+            await notificationModel.updateOne({_id : notificationId},{$set : updateNotification},{upsert : true})
             res.redirect('/admin/notification')
         }
     }
@@ -118,6 +118,23 @@ exports.updateNotificationPost = async(req,res) => {
         res.status(500).json({message : "Error while updating notification"})
     }
 }
+exports.deleteNotification = async (req,res) => {
+    try{
+        const notificationId = req.params.id
+        const notification = await notificationModel.findOne({_id : notificationId})
+
+        if(notification){
+            await notificationModel.deleteOne({_id : notificationId})
+            res.redirect('/admin/notification')
+        }else{
+            res.status(404).json({message : "Notification not found"})
+        }
+    }
+    catch(err){
+        console.log("Error while deleting notification : ",err)
+        res.status(500).json({message : "Error while deleting the notification"})
+    }
+}   
 
 // add Admin
 exports.addAdminGet = (req,res) => {

@@ -25,3 +25,8 @@ dbConnect()
 .catch((error)=>{
     console.log('Database connection failed',error)
 })
+
+// Event 
+// activity
+// banner
+// notification

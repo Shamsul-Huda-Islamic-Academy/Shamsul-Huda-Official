@@ -11,7 +11,9 @@
         <h4><%= notification.notification %></h4>
 
         <a href="/admin/updateNotification/<%= notification._id %>"><button>Edit</button></a>
-        <a href="">Delete</a>
+        <form action="/admin/deleteNotification/<%= notification._id %>" method="post">
+            <button type="submit">Delete</button>
+        </form>
     <% }) %>
 </body>
 </html>
